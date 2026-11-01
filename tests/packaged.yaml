@@ -1,0 +1,5 @@
+version: '3.8'
+services:
+  kanboard:
+    volumes:
+      - ../.runtime/package/AgentMemory:/var/www/app/plugins/AgentMemory:ro

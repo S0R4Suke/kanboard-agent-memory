@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  kanboard:
+    image: kanboard/kanboard:v1.2.55@sha256:0bbfc38baede494115d35c669e084e185c38b8919a7b36bb939e3caf63f34c01
+    ports:
+      - "127.0.0.1:8092:80"
+    volumes:
+      - fresh-data:/var/www/app/data
+      - ../.runtime/package/AgentMemory:/var/www/app/plugins/AgentMemory:ro
+volumes:
+  fresh-data:
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: "${KANBOARD_FRESH_TEST_SUBNET:-10.253.32.0/24}"

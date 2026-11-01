@@ -1,0 +1,26 @@
+/* Only AgentMemory's own records and forms. Native task layout is untouched. */
+.am-native-memory { margin: 20px 0; }
+.am-native-memory .am-card { margin: 20px 0; padding-top: 12px; border-top: 1px solid var(--table-border-color, #ddd); }
+.am-native-memory .am-card-heading h2 { margin-bottom: 8px; }
+.am-native-memory .am-caption, .am-native-memory .am-recorder { font-size: .9em; }
+.am-native-memory .am-timeline { padding-left: 24px; }
+.am-native-memory .am-timeline > li { margin: 16px 0; }
+.am-native-memory .am-event-date { display: flex; flex-wrap: wrap; gap: 8px; font-size: .9em; }
+.am-native-memory .am-event-heading { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.am-native-memory .am-event-heading h3 { margin: 8px 0; }
+.am-native-memory .am-event-icon, .am-native-memory .am-expand { display: none; }
+.am-native-memory .am-actor { margin-left: 8px; }
+.am-native-memory .am-badge { font-weight: bold; margin-right: 6px; }
+.am-native-memory .am-prose { white-space: pre-wrap; overflow-wrap: anywhere; }
+.am-native-memory .am-reason, .am-native-memory .am-recorder { display: block; margin: 6px 0; white-space: pre-wrap; }
+.am-native-memory .am-decision summary, .am-native-memory .am-add summary { cursor: pointer; padding: 8px 0; }
+.am-native-memory .am-decision dd, .am-native-memory .am-change-versions dd { margin: 4px 0 12px 16px; overflow-wrap: anywhere; }
+.am-native-memory .am-entry-actions, .am-native-memory .am-paging { display: flex; flex-wrap: wrap; gap: 16px; margin: 8px 0; }
+.am-form label { display: block; margin: 12px 0 4px; }
+.am-form input:not([type=hidden]), .am-form textarea, .am-form select { max-width: 100%; }
+.am-form textarea { width: 100%; }
+.am-form input[type=datetime-local] { width: auto; }
+.am-form .am-caption { overflow-wrap: anywhere; }
+.am-change { margin: 16px 0; padding-top: 12px; border-top: 1px solid var(--table-border-color, #ddd); }
+.am-change-versions { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px; }
+@media (max-width:768px) { .am-change-versions { grid-template-columns: minmax(0,1fr); } }

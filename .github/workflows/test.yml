@@ -1,0 +1,37 @@
+name: Public candidate checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: pdo_sqlite
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: php tests/store.php && php tests/decision_time.php && php tests/migration.php
+      - run: python3 tests/workspace.py
+      - run: npm ci --ignore-scripts
+      - run: npx playwright install --with-deps chromium
+      - run: docker compose -p agentmemory-verification -f tests/compose.yaml up -d
+      - run: python3 tests/wait.py
+      - run: python3 tests/api.py
+      - run: python3 tests/messages.py
+      - run: python3 tests/manual.py
+      - run: node tests/public_ui.cjs
+      - run: node tests/edit.cjs
+      - run: python3 tests/lifecycle.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-candidate-checks
+          path: |
+            test-results/
+            dist/
+      - if: always()
+        run: docker compose -p agentmemory-verification -f tests/compose.yaml down -v

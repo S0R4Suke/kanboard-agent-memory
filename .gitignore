@@ -1,0 +1,8 @@
+.runtime/
+.env
+__pycache__/
+dist/
+test-results/
+node_modules/
+/node_modules
+.DS_Store

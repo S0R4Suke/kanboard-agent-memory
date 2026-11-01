@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  kanboard:
+    image: kanboard/kanboard:v1.2.55@sha256:0bbfc38baede494115d35c669e084e185c38b8919a7b36bb939e3caf63f34c01
+    ports:
+      - "127.0.0.1:8091:80"
+    volumes:
+      - verification-data:/var/www/app/data
+      - ../AgentMemory:/var/www/app/plugins/AgentMemory:ro
+      - ./MemoryHookFixture:/var/www/app/plugins/MemoryHookFixture:ro
+      - .:/tests:ro
+      - ../examples:/examples:ro
+volumes:
+  verification-data:
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: "${KANBOARD_TEST_SUBNET:-10.253.31.0/24}"

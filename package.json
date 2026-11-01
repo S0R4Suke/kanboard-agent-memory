@@ -1,0 +1,1 @@
+{"name":"kanboard-agent-memory-tests","private":true,"version":"0.1.0-rc.1","engines":{"node":">=20"},"devDependencies":{"playwright":"1.62.1"}}
